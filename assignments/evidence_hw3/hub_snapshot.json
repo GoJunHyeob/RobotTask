@@ -1,0 +1,1572 @@
+{
+  "checked_at": "2026-11-14T12:39:00.251712+00:00",
+  "anonymous": true,
+  "repos": {
+    "go234/cube-box_20261013_041703": {
+      "repo_type": "dataset",
+      "private": false,
+      "sha": "1e2cbf8672643b3ddac31664e382ebc5e00d3163",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "data/chunk-000/file-000.parquet",
+        "meta/episodes/chunk-000/file-000.parquet",
+        "meta/info.json",
+        "meta/stats.json",
+        "meta/tasks.parquet",
+        "videos/observation.images.cam1/chunk-000/file-000.mp4",
+        "videos/observation.images.cam2/chunk-000/file-000.mp4",
+        "videos/observation.images.cam2/chunk-000/file-001.mp4",
+        "videos/observation.images.cam2/chunk-000/file-002.mp4"
+      ],
+      "json": {
+        "meta/info.json": {
+          "codebase_version": "v3.0",
+          "fps": 30,
+          "features": {
+            "action": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.state": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 30,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "observation.images.cam2": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 30,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "timestamp": {
+              "dtype": "float32",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "frame_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "episode_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "task_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            }
+          },
+          "total_episodes": 50,
+          "total_frames": 24423,
+          "total_tasks": 1,
+          "chunks_size": 1000,
+          "data_files_size_in_mb": 100,
+          "video_files_size_in_mb": 200,
+          "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+          "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+          "robot_type": "so_follower",
+          "splits": {
+            "train": "0:50"
+          }
+        },
+        "meta/tasks.jsonl": {
+          "_http_error": 404
+        }
+      }
+    },
+    "go234/act_chunk10": {
+      "repo_type": "model",
+      "private": false,
+      "sha": "a65299fcf9519973d0f1212e53229ec41c287b21",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "model.safetensors",
+        "policy_postprocessor.json",
+        "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "policy_preprocessor.json",
+        "policy_preprocessor_step_3_normalizer_processor.safetensors",
+        "train_config.json"
+      ],
+      "json": {
+        "config.json": {
+          "type": "act",
+          "n_obs_steps": 1,
+          "input_features": {
+            "observation.state": {
+              "type": "STATE",
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            },
+            "observation.images.cam2": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            }
+          },
+          "output_features": {
+            "action": {
+              "type": "ACTION",
+              "shape": [
+                6
+              ]
+            }
+          },
+          "device": "cuda",
+          "use_amp": false,
+          "use_peft": false,
+          "push_to_hub": true,
+          "repo_id": "go234/act_chunk10",
+          "private": null,
+          "tags": null,
+          "license": null,
+          "pretrained_path": null,
+          "pretrained_revision": null,
+          "chunk_size": 10,
+          "n_action_steps": 10,
+          "normalization_mapping": {
+            "VISUAL": "MEAN_STD",
+            "STATE": "MEAN_STD",
+            "ACTION": "MEAN_STD"
+          },
+          "vision_backbone": "resnet18",
+          "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+          "replace_final_stride_with_dilation": false,
+          "pre_norm": false,
+          "dim_model": 512,
+          "n_heads": 8,
+          "dim_feedforward": 3200,
+          "feedforward_activation": "relu",
+          "n_encoder_layers": 4,
+          "n_decoder_layers": 1,
+          "use_vae": true,
+          "latent_dim": 32,
+          "n_vae_encoder_layers": 4,
+          "temporal_ensemble_coeff": null,
+          "dropout": 0.1,
+          "kl_weight": 10.0,
+          "optimizer_lr": 1e-05,
+          "optimizer_weight_decay": 0.0001,
+          "optimizer_lr_backbone": 1e-05
+        },
+        "train_config.json": {
+          "dataset": {
+            "repo_id": "go234/cube-box_20261013_041703",
+            "root": null,
+            "episodes": null,
+            "image_transforms": {
+              "enable": false,
+              "max_num_transforms": 3,
+              "random_order": false,
+              "tfs": {
+                "brightness": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "brightness": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "contrast": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "contrast": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "saturation": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "saturation": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "hue": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "hue": [
+                      -0.05,
+                      0.05
+                    ]
+                  }
+                },
+                "sharpness": {
+                  "weight": 1.0,
+                  "type": "SharpnessJitter",
+                  "kwargs": {
+                    "sharpness": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "affine": {
+                  "weight": 1.0,
+                  "type": "RandomAffine",
+                  "kwargs": {
+                    "degrees": [
+                      -5.0,
+                      5.0
+                    ],
+                    "translate": [
+                      0.05,
+                      0.05
+                    ]
+                  }
+                }
+              }
+            },
+            "revision": null,
+            "use_imagenet_stats": true,
+            "video_backend": "torchcodec",
+            "return_uint8": false,
+            "depth_output_unit": "mm",
+            "streaming": false,
+            "eval_split": 0.0
+          },
+          "env": null,
+          "policy": {
+            "type": "act",
+            "n_obs_steps": 1,
+            "input_features": {
+              "observation.state": {
+                "type": "STATE",
+                "shape": [
+                  6
+                ]
+              },
+              "observation.images.cam1": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              },
+              "observation.images.cam2": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              }
+            },
+            "output_features": {
+              "action": {
+                "type": "ACTION",
+                "shape": [
+                  6
+                ]
+              }
+            },
+            "device": "cuda",
+            "use_amp": false,
+            "use_peft": false,
+            "push_to_hub": true,
+            "repo_id": "go234/act_chunk10",
+            "private": null,
+            "tags": null,
+            "license": null,
+            "pretrained_path": null,
+            "pretrained_revision": null,
+            "chunk_size": 10,
+            "n_action_steps": 10,
+            "normalization_mapping": {
+              "VISUAL": "MEAN_STD",
+              "STATE": "MEAN_STD",
+              "ACTION": "MEAN_STD"
+            },
+            "vision_backbone": "resnet18",
+            "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+            "replace_final_stride_with_dilation": false,
+            "pre_norm": false,
+            "dim_model": 512,
+            "n_heads": 8,
+            "dim_feedforward": 3200,
+            "feedforward_activation": "relu",
+            "n_encoder_layers": 4,
+            "n_decoder_layers": 1,
+            "use_vae": true,
+            "latent_dim": 32,
+            "n_vae_encoder_layers": 4,
+            "temporal_ensemble_coeff": null,
+            "dropout": 0.1,
+            "kl_weight": 10.0,
+            "optimizer_lr": 1e-05,
+            "optimizer_weight_decay": 0.0001,
+            "optimizer_lr_backbone": 1e-05
+          },
+          "reward_model": null,
+          "output_dir": "outputs/train/act_chunk10",
+          "job_name": "act_chunk10",
+          "resume": false,
+          "seed": 1000,
+          "cudnn_deterministic": false,
+          "num_workers": 4,
+          "batch_size": 8,
+          "prefetch_factor": 4,
+          "persistent_workers": true,
+          "steps": 100000,
+          "env_eval_freq": 20000,
+          "log_freq": 200,
+          "eval_steps": 0,
+          "max_eval_samples": 0,
+          "tolerance_s": 0.0001,
+          "save_checkpoint": true,
+          "save_freq": 20000,
+          "use_policy_training_preset": true,
+          "optimizer": {
+            "type": "adamw",
+            "lr": 1e-05,
+            "weight_decay": 0.0001,
+            "grad_clip_norm": 10.0,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "eps": 1e-08
+          },
+          "scheduler": null,
+          "eval": {
+            "n_episodes": 50,
+            "batch_size": 1,
+            "use_async_envs": true,
+            "recording": false,
+            "recording_repo_id": null,
+            "recording_private": false
+          },
+          "wandb": {
+            "enable": false,
+            "disable_artifact": false,
+            "project": "lerobot",
+            "entity": null,
+            "notes": null,
+            "run_id": null,
+            "mode": null,
+            "add_tags": true
+          },
+          "peft": null,
+          "job": {
+            "target": null,
+            "image": "huggingface/lerobot-gpu:latest",
+            "timeout": "2d",
+            "detach": false,
+            "tags": []
+          },
+          "save_checkpoint_to_hub": false,
+          "sample_weighting": null,
+          "rename_map": {},
+          "checkpoint_path": null
+        }
+      }
+    },
+    "go234/act_chunk50": {
+      "repo_type": "model",
+      "private": false,
+      "sha": "9c37156aa1f8118de35b2c5a275d53c08983c3dd",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "model.safetensors",
+        "policy_postprocessor.json",
+        "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "policy_preprocessor.json",
+        "policy_preprocessor_step_3_normalizer_processor.safetensors",
+        "train_config.json"
+      ],
+      "json": {
+        "config.json": {
+          "type": "act",
+          "n_obs_steps": 1,
+          "input_features": {
+            "observation.state": {
+              "type": "STATE",
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            },
+            "observation.images.cam2": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            }
+          },
+          "output_features": {
+            "action": {
+              "type": "ACTION",
+              "shape": [
+                6
+              ]
+            }
+          },
+          "device": "cuda",
+          "use_amp": false,
+          "use_peft": false,
+          "push_to_hub": true,
+          "repo_id": "go234/act_chunk50",
+          "private": null,
+          "tags": null,
+          "license": null,
+          "pretrained_path": null,
+          "pretrained_revision": null,
+          "chunk_size": 50,
+          "n_action_steps": 50,
+          "normalization_mapping": {
+            "VISUAL": "MEAN_STD",
+            "STATE": "MEAN_STD",
+            "ACTION": "MEAN_STD"
+          },
+          "vision_backbone": "resnet18",
+          "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+          "replace_final_stride_with_dilation": false,
+          "pre_norm": false,
+          "dim_model": 512,
+          "n_heads": 8,
+          "dim_feedforward": 3200,
+          "feedforward_activation": "relu",
+          "n_encoder_layers": 4,
+          "n_decoder_layers": 1,
+          "use_vae": true,
+          "latent_dim": 32,
+          "n_vae_encoder_layers": 4,
+          "temporal_ensemble_coeff": null,
+          "dropout": 0.1,
+          "kl_weight": 10.0,
+          "optimizer_lr": 1e-05,
+          "optimizer_weight_decay": 0.0001,
+          "optimizer_lr_backbone": 1e-05
+        },
+        "train_config.json": {
+          "dataset": {
+            "repo_id": "go234/cube-box_20261013_041703",
+            "root": null,
+            "episodes": null,
+            "image_transforms": {
+              "enable": false,
+              "max_num_transforms": 3,
+              "random_order": false,
+              "tfs": {
+                "brightness": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "brightness": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "contrast": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "contrast": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "saturation": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "saturation": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "hue": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "hue": [
+                      -0.05,
+                      0.05
+                    ]
+                  }
+                },
+                "sharpness": {
+                  "weight": 1.0,
+                  "type": "SharpnessJitter",
+                  "kwargs": {
+                    "sharpness": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "affine": {
+                  "weight": 1.0,
+                  "type": "RandomAffine",
+                  "kwargs": {
+                    "degrees": [
+                      -5.0,
+                      5.0
+                    ],
+                    "translate": [
+                      0.05,
+                      0.05
+                    ]
+                  }
+                }
+              }
+            },
+            "revision": null,
+            "use_imagenet_stats": true,
+            "video_backend": "torchcodec",
+            "return_uint8": false,
+            "depth_output_unit": "mm",
+            "streaming": false,
+            "eval_split": 0.0
+          },
+          "env": null,
+          "policy": {
+            "type": "act",
+            "n_obs_steps": 1,
+            "input_features": {
+              "observation.state": {
+                "type": "STATE",
+                "shape": [
+                  6
+                ]
+              },
+              "observation.images.cam1": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              },
+              "observation.images.cam2": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              }
+            },
+            "output_features": {
+              "action": {
+                "type": "ACTION",
+                "shape": [
+                  6
+                ]
+              }
+            },
+            "device": "cuda",
+            "use_amp": false,
+            "use_peft": false,
+            "push_to_hub": true,
+            "repo_id": "go234/act_chunk50",
+            "private": null,
+            "tags": null,
+            "license": null,
+            "pretrained_path": null,
+            "pretrained_revision": null,
+            "chunk_size": 50,
+            "n_action_steps": 50,
+            "normalization_mapping": {
+              "VISUAL": "MEAN_STD",
+              "STATE": "MEAN_STD",
+              "ACTION": "MEAN_STD"
+            },
+            "vision_backbone": "resnet18",
+            "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+            "replace_final_stride_with_dilation": false,
+            "pre_norm": false,
+            "dim_model": 512,
+            "n_heads": 8,
+            "dim_feedforward": 3200,
+            "feedforward_activation": "relu",
+            "n_encoder_layers": 4,
+            "n_decoder_layers": 1,
+            "use_vae": true,
+            "latent_dim": 32,
+            "n_vae_encoder_layers": 4,
+            "temporal_ensemble_coeff": null,
+            "dropout": 0.1,
+            "kl_weight": 10.0,
+            "optimizer_lr": 1e-05,
+            "optimizer_weight_decay": 0.0001,
+            "optimizer_lr_backbone": 1e-05
+          },
+          "reward_model": null,
+          "output_dir": "outputs/train/act_chunk50",
+          "job_name": "act_chunk50",
+          "resume": false,
+          "seed": 1000,
+          "cudnn_deterministic": false,
+          "num_workers": 4,
+          "batch_size": 8,
+          "prefetch_factor": 4,
+          "persistent_workers": true,
+          "steps": 100000,
+          "env_eval_freq": 20000,
+          "log_freq": 200,
+          "eval_steps": 0,
+          "max_eval_samples": 0,
+          "tolerance_s": 0.0001,
+          "save_checkpoint": true,
+          "save_freq": 20000,
+          "use_policy_training_preset": true,
+          "optimizer": {
+            "type": "adamw",
+            "lr": 1e-05,
+            "weight_decay": 0.0001,
+            "grad_clip_norm": 10.0,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "eps": 1e-08
+          },
+          "scheduler": null,
+          "eval": {
+            "n_episodes": 50,
+            "batch_size": 1,
+            "use_async_envs": true,
+            "recording": false,
+            "recording_repo_id": null,
+            "recording_private": false
+          },
+          "wandb": {
+            "enable": false,
+            "disable_artifact": false,
+            "project": "lerobot",
+            "entity": null,
+            "notes": null,
+            "run_id": null,
+            "mode": null,
+            "add_tags": true
+          },
+          "peft": null,
+          "job": {
+            "target": null,
+            "image": "huggingface/lerobot-gpu:latest",
+            "timeout": "2d",
+            "detach": false,
+            "tags": []
+          },
+          "save_checkpoint_to_hub": false,
+          "sample_weighting": null,
+          "rename_map": {},
+          "checkpoint_path": null
+        }
+      }
+    },
+    "go234/act_chunk100": {
+      "repo_type": "model",
+      "private": false,
+      "sha": "98f80206acb52da9318bea355e158f60b12a237d",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "model.safetensors",
+        "policy_postprocessor.json",
+        "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+        "policy_preprocessor.json",
+        "policy_preprocessor_step_3_normalizer_processor.safetensors",
+        "train_config.json"
+      ],
+      "json": {
+        "config.json": {
+          "type": "act",
+          "n_obs_steps": 1,
+          "input_features": {
+            "observation.state": {
+              "type": "STATE",
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            },
+            "observation.images.cam2": {
+              "type": "VISUAL",
+              "shape": [
+                3,
+                480,
+                640
+              ]
+            }
+          },
+          "output_features": {
+            "action": {
+              "type": "ACTION",
+              "shape": [
+                6
+              ]
+            }
+          },
+          "device": "cuda",
+          "use_amp": false,
+          "use_peft": false,
+          "push_to_hub": true,
+          "repo_id": "go234/act_chunk100",
+          "private": null,
+          "tags": null,
+          "license": null,
+          "pretrained_path": null,
+          "pretrained_revision": null,
+          "chunk_size": 100,
+          "n_action_steps": 100,
+          "normalization_mapping": {
+            "VISUAL": "MEAN_STD",
+            "STATE": "MEAN_STD",
+            "ACTION": "MEAN_STD"
+          },
+          "vision_backbone": "resnet18",
+          "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+          "replace_final_stride_with_dilation": false,
+          "pre_norm": false,
+          "dim_model": 512,
+          "n_heads": 8,
+          "dim_feedforward": 3200,
+          "feedforward_activation": "relu",
+          "n_encoder_layers": 4,
+          "n_decoder_layers": 1,
+          "use_vae": true,
+          "latent_dim": 32,
+          "n_vae_encoder_layers": 4,
+          "temporal_ensemble_coeff": null,
+          "dropout": 0.1,
+          "kl_weight": 10.0,
+          "optimizer_lr": 1e-05,
+          "optimizer_weight_decay": 0.0001,
+          "optimizer_lr_backbone": 1e-05
+        },
+        "train_config.json": {
+          "dataset": {
+            "repo_id": "go234/cube-box_20261013_041703",
+            "root": null,
+            "episodes": null,
+            "image_transforms": {
+              "enable": false,
+              "max_num_transforms": 3,
+              "random_order": false,
+              "tfs": {
+                "brightness": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "brightness": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "contrast": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "contrast": [
+                      0.8,
+                      1.2
+                    ]
+                  }
+                },
+                "saturation": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "saturation": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "hue": {
+                  "weight": 1.0,
+                  "type": "ColorJitter",
+                  "kwargs": {
+                    "hue": [
+                      -0.05,
+                      0.05
+                    ]
+                  }
+                },
+                "sharpness": {
+                  "weight": 1.0,
+                  "type": "SharpnessJitter",
+                  "kwargs": {
+                    "sharpness": [
+                      0.5,
+                      1.5
+                    ]
+                  }
+                },
+                "affine": {
+                  "weight": 1.0,
+                  "type": "RandomAffine",
+                  "kwargs": {
+                    "degrees": [
+                      -5.0,
+                      5.0
+                    ],
+                    "translate": [
+                      0.05,
+                      0.05
+                    ]
+                  }
+                }
+              }
+            },
+            "revision": null,
+            "use_imagenet_stats": true,
+            "video_backend": "torchcodec",
+            "return_uint8": false,
+            "depth_output_unit": "mm",
+            "streaming": false,
+            "eval_split": 0.0
+          },
+          "env": null,
+          "policy": {
+            "type": "act",
+            "n_obs_steps": 1,
+            "input_features": {
+              "observation.state": {
+                "type": "STATE",
+                "shape": [
+                  6
+                ]
+              },
+              "observation.images.cam1": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              },
+              "observation.images.cam2": {
+                "type": "VISUAL",
+                "shape": [
+                  3,
+                  480,
+                  640
+                ]
+              }
+            },
+            "output_features": {
+              "action": {
+                "type": "ACTION",
+                "shape": [
+                  6
+                ]
+              }
+            },
+            "device": "cuda",
+            "use_amp": false,
+            "use_peft": false,
+            "push_to_hub": true,
+            "repo_id": "go234/act_chunk100",
+            "private": null,
+            "tags": null,
+            "license": null,
+            "pretrained_path": null,
+            "pretrained_revision": null,
+            "chunk_size": 100,
+            "n_action_steps": 100,
+            "normalization_mapping": {
+              "VISUAL": "MEAN_STD",
+              "STATE": "MEAN_STD",
+              "ACTION": "MEAN_STD"
+            },
+            "vision_backbone": "resnet18",
+            "pretrained_backbone_weights": "ResNet18_Weights.IMAGENET1K_V1",
+            "replace_final_stride_with_dilation": false,
+            "pre_norm": false,
+            "dim_model": 512,
+            "n_heads": 8,
+            "dim_feedforward": 3200,
+            "feedforward_activation": "relu",
+            "n_encoder_layers": 4,
+            "n_decoder_layers": 1,
+            "use_vae": true,
+            "latent_dim": 32,
+            "n_vae_encoder_layers": 4,
+            "temporal_ensemble_coeff": null,
+            "dropout": 0.1,
+            "kl_weight": 10.0,
+            "optimizer_lr": 1e-05,
+            "optimizer_weight_decay": 0.0001,
+            "optimizer_lr_backbone": 1e-05
+          },
+          "reward_model": null,
+          "output_dir": "outputs/train/act_chunk100",
+          "job_name": "act_chunk100",
+          "resume": false,
+          "seed": 1000,
+          "cudnn_deterministic": false,
+          "num_workers": 4,
+          "batch_size": 8,
+          "prefetch_factor": 4,
+          "persistent_workers": true,
+          "steps": 100000,
+          "env_eval_freq": 20000,
+          "log_freq": 200,
+          "eval_steps": 0,
+          "max_eval_samples": 0,
+          "tolerance_s": 0.0001,
+          "save_checkpoint": true,
+          "save_freq": 20000,
+          "use_policy_training_preset": true,
+          "optimizer": {
+            "type": "adamw",
+            "lr": 1e-05,
+            "weight_decay": 0.0001,
+            "grad_clip_norm": 10.0,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "eps": 1e-08
+          },
+          "scheduler": null,
+          "eval": {
+            "n_episodes": 50,
+            "batch_size": 1,
+            "use_async_envs": true,
+            "recording": false,
+            "recording_repo_id": null,
+            "recording_private": false
+          },
+          "wandb": {
+            "enable": false,
+            "disable_artifact": false,
+            "project": "lerobot",
+            "entity": null,
+            "notes": null,
+            "run_id": null,
+            "mode": null,
+            "add_tags": true
+          },
+          "peft": null,
+          "job": {
+            "target": null,
+            "image": "huggingface/lerobot-gpu:latest",
+            "timeout": "2d",
+            "detach": false,
+            "tags": []
+          },
+          "save_checkpoint_to_hub": false,
+          "sample_weighting": null,
+          "rename_map": {},
+          "checkpoint_path": null
+        }
+      }
+    },
+    "go234/rollout_act_chunk10_final_20261114_193541": {
+      "repo_type": "dataset",
+      "private": false,
+      "sha": "2a79f7271e3c6057ca021f8de7e6f9126a72b35d",
+      "files": [
+        ".gitattributes",
+        "data/chunk-000/file-000.parquet",
+        "meta/episodes/chunk-000/file-000.parquet",
+        "meta/info.json",
+        "meta/stats.json",
+        "meta/tasks.parquet",
+        "videos/observation.images.cam1/chunk-000/file-000.mp4",
+        "videos/observation.images.cam2/chunk-000/file-000.mp4"
+      ],
+      "json": {
+        "meta/info.json": {
+          "codebase_version": "v3.0",
+          "fps": 25,
+          "features": {
+            "action": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.state": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "observation.images.cam2": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "timestamp": {
+              "dtype": "float32",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "frame_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "episode_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "task_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            }
+          },
+          "total_episodes": 10,
+          "total_frames": 4511,
+          "total_tasks": 1,
+          "chunks_size": 1000,
+          "data_files_size_in_mb": 100,
+          "video_files_size_in_mb": 200,
+          "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+          "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+          "robot_type": "so_follower",
+          "splits": {
+            "train": "0:10"
+          }
+        },
+        "meta/tasks.jsonl": {
+          "_http_error": 404
+        }
+      }
+    },
+    "go234/rollout_act_chunk50_final_20261114_194915": {
+      "repo_type": "dataset",
+      "private": false,
+      "sha": "4154519db8ae2b8941663c9b8b0f8508af9c49f7",
+      "files": [
+        ".gitattributes",
+        "data/chunk-000/file-000.parquet",
+        "meta/episodes/chunk-000/file-000.parquet",
+        "meta/info.json",
+        "meta/stats.json",
+        "meta/tasks.parquet",
+        "videos/observation.images.cam1/chunk-000/file-000.mp4",
+        "videos/observation.images.cam2/chunk-000/file-000.mp4"
+      ],
+      "json": {
+        "meta/info.json": {
+          "codebase_version": "v3.0",
+          "fps": 25,
+          "features": {
+            "action": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.state": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "observation.images.cam2": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "timestamp": {
+              "dtype": "float32",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "frame_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "episode_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "task_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            }
+          },
+          "total_episodes": 10,
+          "total_frames": 4766,
+          "total_tasks": 1,
+          "chunks_size": 1000,
+          "data_files_size_in_mb": 100,
+          "video_files_size_in_mb": 200,
+          "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+          "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+          "robot_type": "so_follower",
+          "splits": {
+            "train": "0:10"
+          }
+        },
+        "meta/tasks.jsonl": {
+          "_http_error": 404
+        }
+      }
+    },
+    "go234/rollout_act_chunk100_final_20261114_200117": {
+      "repo_type": "dataset",
+      "private": false,
+      "sha": "0b818c22538e36d4a95fb705c988dc31a8851040",
+      "files": [
+        ".gitattributes",
+        "data/chunk-000/file-000.parquet",
+        "meta/episodes/chunk-000/file-000.parquet",
+        "meta/info.json",
+        "meta/stats.json",
+        "meta/tasks.parquet",
+        "videos/observation.images.cam1/chunk-000/file-000.mp4",
+        "videos/observation.images.cam2/chunk-000/file-000.mp4"
+      ],
+      "json": {
+        "meta/info.json": {
+          "codebase_version": "v3.0",
+          "fps": 25,
+          "features": {
+            "action": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.state": {
+              "dtype": "float32",
+              "names": [
+                "shoulder_pan.pos",
+                "shoulder_lift.pos",
+                "elbow_flex.pos",
+                "wrist_flex.pos",
+                "wrist_roll.pos",
+                "gripper.pos"
+              ],
+              "shape": [
+                6
+              ]
+            },
+            "observation.images.cam1": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "observation.images.cam2": {
+              "dtype": "video",
+              "shape": [
+                480,
+                640,
+                3
+              ],
+              "names": [
+                "height",
+                "width",
+                "channels"
+              ],
+              "info": {
+                "is_depth_map": false,
+                "video.height": 480,
+                "video.width": 640,
+                "video.codec": "av1",
+                "video.pix_fmt": "yuv420p",
+                "video.fps": 25,
+                "video.channels": 3,
+                "has_audio": false,
+                "video.g": 2,
+                "video.crf": 30,
+                "video.preset": 12,
+                "video.fast_decode": 0,
+                "video.video_backend": "pyav",
+                "video.extra_options": {}
+              }
+            },
+            "timestamp": {
+              "dtype": "float32",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "frame_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "episode_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            },
+            "task_index": {
+              "dtype": "int64",
+              "shape": [
+                1
+              ],
+              "names": null
+            }
+          },
+          "total_episodes": 10,
+          "total_frames": 4586,
+          "total_tasks": 1,
+          "chunks_size": 1000,
+          "data_files_size_in_mb": 100,
+          "video_files_size_in_mb": 200,
+          "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+          "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+          "robot_type": "so_follower",
+          "splits": {
+            "train": "0:10"
+          }
+        },
+        "meta/tasks.jsonl": {
+          "_http_error": 404
+        }
+      }
+    }
+  }
+}

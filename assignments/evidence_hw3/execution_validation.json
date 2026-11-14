@@ -1,0 +1,14 @@
+{
+  "code_cells": 13,
+  "all_executed": true,
+  "all_have_outputs": true,
+  "error_outputs": 0,
+  "experiment_complete": false,
+  "episode_specific_scores_fabricated": false,
+  "representative_clip_scores": {
+    "10": 2,
+    "50": 3,
+    "100": 3
+  },
+  "notebook_sha256": "1b6752b0d3708a1cc5667b8a781446a30c0bb38e2f78ad89cc1f242e78a3e5df"
+}
