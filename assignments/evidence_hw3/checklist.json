@@ -19,5 +19,5 @@
   "동일 물체·시작 위치·평가 프로토콜 확인": false,
   "반응성 테스트 9회 관찰": true,
   "Temporal ensemble 회차별 결과 10개 입력": true,
-  "Temporal ensemble 평가 데이터셋 메타데이터 10개": false
+  "Temporal ensemble 평가 데이터셋 메타데이터 10개": true
 }
