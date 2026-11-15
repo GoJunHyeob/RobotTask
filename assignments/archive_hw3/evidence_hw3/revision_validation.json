@@ -1,0 +1,36 @@
+{
+  "executed_report_cells": 9,
+  "errors": [],
+  "original_sha256": {
+    "archive_hw3/assignment_3_uploaded_template.ipynb": "d2161f5861a5e197b32db385f9119ce6b0d4ffaa46a47d74406aaa4ed610541c",
+    "archive_hw3/assignment_3_initial_results.ipynb": "d0f4e5dca52f6a865dda5986d2e2f4e330129641f2d1171f19dbe2f72283286a"
+  },
+  "new_results_status": "unevaluated",
+  "control_checks": {
+    "chunk10/dataset": true,
+    "chunk10/steps": true,
+    "chunk10/batch_size": true,
+    "chunk10/seed": true,
+    "chunk10/use_amp": true,
+    "chunk10/chunk_size": true,
+    "chunk10/n_action_steps": true,
+    "chunk10/TE 비활성": true,
+    "chunk50/dataset": true,
+    "chunk50/steps": true,
+    "chunk50/batch_size": true,
+    "chunk50/seed": true,
+    "chunk50/use_amp": true,
+    "chunk50/chunk_size": true,
+    "chunk50/n_action_steps": true,
+    "chunk50/TE 비활성": true,
+    "chunk100/dataset": true,
+    "chunk100/steps": true,
+    "chunk100/batch_size": true,
+    "chunk100/seed": true,
+    "chunk100/use_amp": true,
+    "chunk100/chunk_size": true,
+    "chunk100/n_action_steps": true,
+    "chunk100/TE 비활성": true
+  },
+  "structure_diffs": []
+}

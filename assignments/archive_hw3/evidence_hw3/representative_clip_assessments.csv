@@ -1,0 +1,4 @@
+chunk_size,representative_clip_smooth,scope,confidence,episode,note,dataset,video_path,clip_start_s,clip_duration_s,gif_path
+10,2,모델별 대표 cam1 클립 하나만; 10회 평균 아님,낮음,,화면 내 병과 배경 위치가 짧게 여러 차례 왕복하며 흔들리는 장면이 보임. 반복 흔들림을 근거로 2점. 팔 제어 원인·성공 여부는 판정 불가.,go234/rollout_act_chunk10_final_20261114_193541,videos/observation.images.cam1/chunk-000/file-000.mp4,3.0,5.0,images/hw3_chunk10.gif
+50,3,모델별 대표 cam1 클립 하나만; 10회 평균 아님,낮음,,초반 정지에 가까운 구간 뒤 배경이 이동하고 되돌아오는 장면이 보임. 방향/속도 변화가 있어 3점. 정지 자체를 좋은 부드러움으로 간주하지 않음.,go234/rollout_act_chunk50_final_20261114_194915,videos/observation.images.cam1/chunk-000/file-000.mp4,3.0,5.0,images/hw3_chunk50.gif
+100,3,모델별 대표 cam1 클립 하나만; 10회 평균 아님,낮음,,배경이 한 방향으로 이동한 뒤 되돌아오고 후반에 변화가 작아짐. 이동과 방향 전환이 보여 3점. 청크 경계 튐으로 단정할 동기화 정보 없음.,go234/rollout_act_chunk100_final_20261114_200117,videos/observation.images.cam1/chunk-000/file-000.mp4,3.0,5.0,images/hw3_chunk100.gif
